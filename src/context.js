@@ -1,6 +1,7 @@
 import React, { useState, useContext, useReducer, useEffect } from "react";
 import cartItems from "./data";
 import reducer from "./reducer";
+import { CLEAR_CART, REMOVE } from "./Vars";
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
 const url = "https://course-api.com/react-useReducer-cart-project";
@@ -16,10 +17,20 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const clearItems = () => {
+    dispatch({ type: CLEAR_CART });
+  };
+
+  const remove = (id) => {
+    dispatch({ type: REMOVE, payload: id });
+  };
+
   return (
     <AppContext.Provider
       value={{
         ...state,
+        clearItems,
+        remove,
       }}
     >
       {children}
