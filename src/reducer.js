@@ -1,4 +1,12 @@
-import { CLEAR_CART, DECREASE, GET_TOTALS, INCREASE, REMOVE } from "./Vars";
+import {
+  CLEAR_CART,
+  DECREASE,
+  DISPLAY_ITEMS,
+  GET_TOTALS,
+  INCREASE,
+  LOADING,
+  REMOVE,
+} from "./Vars";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -51,6 +59,10 @@ const reducer = (state, action) => {
       );
       total = parseFloat(total.toFixed(2));
       return { ...state, total, amount };
+    case LOADING:
+      return { ...state, loading: true };
+    case DISPLAY_ITEMS:
+      return { ...state, cart: action.payload, loading: false };
     default:
       return state;
   }
