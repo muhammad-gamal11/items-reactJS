@@ -1,7 +1,7 @@
 import React, { useState, useContext, useReducer, useEffect } from "react";
 import cartItems from "./data";
 import reducer from "./reducer";
-import { CLEAR_CART, REMOVE } from "./Vars";
+import { CLEAR_CART, DECREASE, GET_TOTALS, INCREASE, REMOVE } from "./Vars";
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
 const url = "https://course-api.com/react-useReducer-cart-project";
@@ -24,6 +24,16 @@ const AppProvider = ({ children }) => {
   const remove = (id) => {
     dispatch({ type: REMOVE, payload: id });
   };
+  const increase = (id) => {
+    dispatch({ type: INCREASE, payload: id });
+  };
+  const decrease = (id) => {
+    dispatch({ type: DECREASE, payload: id });
+  };
+
+  useEffect(() => {
+    dispatch({ type: GET_TOTALS });
+  }, [state.cart]);
 
   return (
     <AppContext.Provider
@@ -31,6 +41,8 @@ const AppProvider = ({ children }) => {
         ...state,
         clearItems,
         remove,
+        increase,
+        decrease,
       }}
     >
       {children}
