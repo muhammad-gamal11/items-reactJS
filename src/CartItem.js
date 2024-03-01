@@ -2,7 +2,7 @@ import React from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { useGlobalContext } from "./context";
 const CartItem = ({ id, img, title, price, amount }) => {
-  const { remove, increase, decrease } = useGlobalContext();
+  const { remove, increase, decrease, toggleAmount } = useGlobalContext();
   return (
     <article className="cart-item">
       <img src={img} alt={title} />
@@ -16,13 +16,13 @@ const CartItem = ({ id, img, title, price, amount }) => {
       </div>
       <div>
         {/* increase amount */}
-        <button className="amount-btn" onClick={() => increase(id)}>
+        <button className="amount-btn" onClick={() => toggleAmount(id, "inc")}>
           <IoIosArrowUp className="arrow" />
         </button>
         {/* amount */}
         <p className="amount">{amount}</p>
         {/* decrease amount */}
-        <button className="amount-btn" onClick={() => decrease(id)}>
+        <button className="amount-btn" onClick={() => toggleAmount(id, "dec")}>
           <IoIosArrowDown className="arrow" />
         </button>
       </div>

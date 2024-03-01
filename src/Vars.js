@@ -5,6 +5,7 @@ const DECREASE = "DECREASE";
 const GET_TOTALS = "GET_TOTALS";
 const LOADING = "LOADING";
 const DISPLAY_ITEMS = "DISPLAY_ITEMS";
+const TOGGLE_AMOUNT = "TOGGLE_AMOUNT";
 
 export {
   REMOVE,
@@ -14,4 +15,5 @@ export {
   GET_TOTALS,
   LOADING,
   DISPLAY_ITEMS,
+  TOGGLE_AMOUNT,
 };

@@ -9,6 +9,7 @@ import {
   INCREASE,
   LOADING,
   REMOVE,
+  TOGGLE_AMOUNT,
 } from "./Vars";
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
@@ -50,6 +51,10 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const toggleAmount = (id, type) => {
+    dispatch({ type: TOGGLE_AMOUNT, payload: { id, type } });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -66,6 +71,7 @@ const AppProvider = ({ children }) => {
         remove,
         increase,
         decrease,
+        toggleAmount,
       }}
     >
       {children}
